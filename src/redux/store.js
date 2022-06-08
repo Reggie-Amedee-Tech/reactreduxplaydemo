@@ -1,11 +1,12 @@
-import { createStore, combineReducers } from "redux";
-import cakeReducer from "./cake/cakeReducer";
-import donutReducer from "./donuts/donutReducer";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from '@redux-devtools/extension';
+import logger from "redux-logger";
+import rootReducer from "./rootReducer";
 
 
-const rootReducer = combineReducers({
-    donutReducer,
-    cakeReducer
-})
-const store = createStore(donutReducer)
+
+const store = createStore(
+    rootReducer, composeWithDevTools(applyMiddleware(logger, thunk))
+)
 export default store;

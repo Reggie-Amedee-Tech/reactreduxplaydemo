@@ -9,7 +9,7 @@ const donutReducer = (state = initialState, action) => {
         case BUY_DONUT:
             return {
                 ...state,
-                numberOfDonuts: state.numberOfDonuts - 1
+                numberOfDonuts: state.numberOfDonuts - action.payload
             }
 
             default:
